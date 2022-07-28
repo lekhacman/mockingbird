@@ -1,0 +1,88 @@
+{
+  "name": "mockingbird",
+  "port": "8080",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "git@github.com:lekhacman/mockingbird.git",
+  "author": "Le Khac Man <lekhacman@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node src/index.js",
+    "test": "eslint src",
+    "fix": "eslint --fix src",
+    "build": "node config/docker.js build",
+    "logs": "node config/docker.js logs",
+    "dockerStart": "node config/docker.js start",
+    "stop": "node config/docker.js stop",
+    "restart": "node config/docker.js restart",
+    "clean": "node config/docker.js clean"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "extends": [
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "trailingComma": "es5"
+        }
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "*.test.js"
+        ],
+        "rules": {
+          "no-unused-vars": "off",
+          "no-global-assign": "off"
+        }
+      }
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "@koa/router": "^12.0.0",
+    "axios": "^0.27.2",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-logger": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/node": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "@types/koa": "^2.13.1",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-router": "^7.4.2",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.2.1"
+  }
+}
